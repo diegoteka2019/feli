@@ -1,0 +1,44 @@
+<app-side-bar (onDelete)="deleteItem(idPlace)" (onEdit)="editItem(idPlace, {route: route.parent})">
+
+      <div header>
+            <h3 class="title">Detalles del Local</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <div class="details">
+                        <div class="item">
+                              <span class="title">Marca</span>
+                              <p class="descripcion">
+                                    {{ item?.tituloMarca }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Dirección</span>
+                              <p class="descripcion">
+                                    {{ item?.direccion }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Departamento</span>
+                              <p class="descripcion">
+                                    {{ item?.nombreDepartamento }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Horário</span>
+                              <p class="descripcion">
+                                    {{ item?.horario }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Teléfono</span>
+                              <p class="descripcion">
+                                    {{ item?.telefono }}
+                              </p>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</app-side-bar>

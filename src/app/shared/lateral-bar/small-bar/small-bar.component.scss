@@ -1,0 +1,24 @@
+@import '../abstract-lateral-bar';
+
+
+.bar-container {
+
+      .option {
+            border-radius: 50%;
+            margin-bottom: 4px;
+            height: 37px;
+            width: 37px;
+
+            .option-icon {
+                  font-size: 18px;
+            }
+
+      }
+
+      // .separator {
+      //       position: relative;
+      //       margin-bottom: 16px;
+      //       &:after {}
+      // }
+
+}

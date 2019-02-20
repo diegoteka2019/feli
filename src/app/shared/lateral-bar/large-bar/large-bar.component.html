@@ -1,0 +1,22 @@
+<div class="flex flex-column bar-container">
+
+      <div class="title flex align-items-center justify-content-between">
+            <img class="logo" src="assets/logo_samsung-01.svg" alt="">
+            <i class="fas fa-bars icon" (click)="menuButtonClick()"></i>
+      </div>
+
+      <div *ngFor="let page of pages" class="flex flex-column">
+
+            <div class="option" [ngClass]="{'selected': page.selected, 'separator': page.section}" (click)="goTo(page.url)">
+
+                  <span class="flex align-items-center">
+                        <div class="flex align-items-center justify-content-center option-icon-container">
+                              <i class="{{page.icon}} option-icon"></i>
+                        </div>
+                        {{page.name}}
+                  </span>
+
+            </div>
+      </div>
+
+</div>

@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'mixins';
+
+.header-bar {
+      width: 100%;
+      background-color: $color-dark;
+
+      .content {
+            width: inherit;
+            padding: 12px 15px;
+
+            .title {
+                  font-size: 22px;
+                  color: $color-regular;
+            }
+
+            .user {
+                  width: 32px;
+                  height: 32px;
+                  margin-left: 15px;
+                  background-color: $color-blue;
+                  font-size: 14px;
+                  color: $color-light;
+                  border-radius: 50%;
+                  cursor: pointer;
+            }
+      }
+}

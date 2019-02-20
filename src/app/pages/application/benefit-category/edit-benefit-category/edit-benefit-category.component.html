@@ -1,0 +1,20 @@
+<app-side-bar [showEditButton]="false" (onDelete)="delete(categoryId, $event)" [showCloseDialog]="true">
+
+      <div header>
+            <h3 class="title">Editar Producto</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="benefitCategoryGroup">
+                        <form-input [formControl]="benefitCategoryGroup.controls['tituloLargo']" label="Titulo"
+                              [required]="true"></form-input>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="benefitCategoryGroup.invalid" (click)="saveAction(benefitCategoryGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

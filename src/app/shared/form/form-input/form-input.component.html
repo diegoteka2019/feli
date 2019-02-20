@@ -1,0 +1,4 @@
+<label (click)="onTouched()">
+      <span class="label" [ngClass]="{'required': required && !readonly}">{{ label }}</span>
+      <input [ngClass]="{'readonly': readonly}" type="text" [readonly]="readonly" (input)="pushChanges($event.target.value)" [(ngModel)]="value">
+</label>

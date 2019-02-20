@@ -1,0 +1,13 @@
+<div class="flex flex-column">
+
+  <app-large-bar *ngIf="isLarge" 
+  [pages]="pages" 
+  (menuButtonEvent)="changeMenu()"
+  (pageButtonEvent)="goto($event)"></app-large-bar>
+  
+  <app-small-bar *ngIf="!isLarge" 
+  [pages]="pages" 
+  (menuButtonEvent)="changeMenu()"
+  (pageButtonEvent)="goto($event)"></app-small-bar>
+
+</div>

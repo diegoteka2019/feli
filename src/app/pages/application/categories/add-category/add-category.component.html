@@ -1,0 +1,23 @@
+<app-side-bar [showDeleteButton]="false" [showEditButton]="false" [showCloseDialog]="!this.categoryGroup.pristine">
+
+      <div header>
+            <h3 class="title">Añadir Categoría</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="categoryGroup">
+                        <form-input [formControl]="categoryGroup.controls['titulo']" label="Título" [required]="true"></form-input>                        
+                        <label for="">
+                              <span class="label">Imagen</span>
+                              <app-image-upload (onFileUpload)="setImage($event)"></app-image-upload>
+                        </label>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="categoryGroup.invalid" (click)="addCategory(categoryGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

@@ -1,0 +1,149 @@
+<app-side-bar [showEditButton]="false" [showDeleteButton]="false" [showCloseDialog]="!this.benefitScheduleGroup.pristine">
+
+      <div header>
+            <h3 class="title">{{titulo}} Agenda de Beneficio</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="benefitScheduleGroup">
+
+                        <label for="">
+                              <span class="label required">Beneficio</span>
+                              <app-auto-complete *ngIf="benefitScheduleGroup.get('beneficio')" [required]="true"
+                                    [outerGroup]="benefitScheduleGroup" [autocompleteData]="benefitsAcd" placeholder="Beneficio"
+                                    [fcName]="'beneficio'"></app-auto-complete>
+                        </label>
+
+                        <div class="flex check-cupons check-destaque">
+                              <mat-checkbox [checked]="false" [formControl]="benefitScheduleGroup.controls['destacado']">
+                                    <span class="check-text">Destacado</span>
+                              </mat-checkbox>
+                        </div>
+
+                        <div class="flex align-items-center">
+                              <form-input [formControl]="benefitScheduleGroup.controls['tituloLargo']" label="Título a visualizar en la App"
+                                    [required]="true" class="flex-1"></form-input>
+                              <button class="copiar-titulo button light-blue" (click)="copiarTitulo()">Copiar de Beneficio</button>
+                        </div>
+
+                        <label for="">
+                              <span class="label required">Detalle a visualizar en la App</span>
+                              <angular-editor id="editor1" formControlName="detalle"></angular-editor>
+                        </label>
+
+                        <div class="flex date-pickers margin-top">
+                              <label for="">
+                                    <span class="label required">Válido Desde</span>
+                                    <div class="datepicker">
+                                          <input matInput formControlName="fechaDesde" autocomplete="off" readonly
+                                                [matDatepicker]="fechaDesde" placeholder="Desde la Fecha" [required]="true"
+                                                class="date-picker-input" (dateChange)="changeDateFrom($event)" [min]="ranges.minFrom"
+                                                [max]="ranges.maxFrom">
+                                          <mat-datepicker-toggle matSuffix [for]="fechaDesde">
+                                          </mat-datepicker-toggle>
+                                          <mat-datepicker disabled="false" #fechaDesde></mat-datepicker>
+                                    </div>
+                              </label>
+
+                              <label for="">
+                                    <span class="label required">Válido Hasta</span>
+                                    <div class="datepicker">
+                                          <input matInput formControlName="fechaHasta" autocomplete="off" readonly
+                                                [matDatepicker]="fechaHasta" placeholder="Hasta la Fecha" [required]="true"
+                                                class="date-picker-input" (dateChange)="changeDateTo($event)" [min]="ranges.minTo"
+                                                [max]="ranges.maxTo">
+                                          <mat-datepicker-toggle matSuffix [for]="fechaHasta">
+                                          </mat-datepicker-toggle>
+                                          <mat-datepicker disabled="false" #fechaHasta></mat-datepicker>
+                                    </div>
+                              </label>
+
+                        </div>
+
+                        <label for="">
+                              <span class="label margin-top">Disponibilidad</span>
+                        </label>
+                        <div class="flex flex-row">
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleLun']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleLun'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleLun'].value}"
+                                          class="text">Lun</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleMar']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleMar'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleMar'].value}"
+                                          class="text">Mar</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleMie']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleMie'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleMie'].value}"
+                                          class="text">Mié</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleJue']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleJue'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleJue'].value}"
+                                          class="text">Jue</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleVie']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleVie'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleVie'].value}"
+                                          class="text">Vie</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleSab']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleSab'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleSab'].value}"
+                                          class="text">Sáb</span>
+                              </label>
+
+                              <label class="flex check">
+                                    <input class="checkbox" type="checkbox" [formControl]="benefitScheduleGroup.controls['disponibleDom']" />
+                                    <span [ngClass]="{'checked': benefitScheduleGroup.controls['disponibleDom'].value, 'unchecked' : !benefitScheduleGroup.controls['disponibleDom'].value}"
+                                          class="text">Dom</span>
+                              </label>
+
+                        </div>
+
+                        <label for="" *ngIf="benefitIsValid()">
+                              <span class="label margin-top">Locales</span>
+                              <div class="flex align-items-start">
+                                    <multi-auto-complete class="flex-1" [autocompleteData]="placesData" [selectedData]="selectedPlaces"></multi-auto-complete>
+                                    <button class="add-all button small light-blue" (click)="selectAllPlaces()">Seleccionar
+                                          todos</button>
+                              </div>
+                        </label>
+
+                        <div class="flex check-cupons margin-top">
+                              <mat-checkbox (change)="predefinedStockChange()" type="checkbox" [checked]="false"
+                                    [formControl]="benefitScheduleGroup.controls['tieneStockPredefinido']">
+                                    <span class="check-text">Códigos predefinidos {{ benefitSelected ? 'por ' +
+                                          benefitSelected?.marca.titulo : '' }}</span>
+                              </mat-checkbox>
+                        </div>
+
+                        <div class="flex items-group">
+                              <form-input class="item" *ngIf="!benefitScheduleGroup.controls['tieneStockPredefinido'].value"
+                                    [formControl]="benefitScheduleGroup.controls['stockCupones']" label="Stock Cúpones (0 = ilimitado)"
+                                    [required]="true"></form-input>
+
+                              <form-input class="item" [required]="true" [formControl]="benefitScheduleGroup.controls['maximoPorUsuario']"
+                                    label="Maximo por Usuario (0 = ilimitado)"></form-input>
+                        </div>
+
+
+
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="benefitScheduleGroup.invalid" (click)="saveAction()">Guardar</button>
+      </div>
+
+</app-side-bar>

@@ -1,0 +1,30 @@
+@import 'variables';
+
+.details {
+      .item {
+            &+.item {
+                  margin-top: 30px;
+            }
+      }
+
+      .title {
+            font-size: 12px;
+            color: $color-regular;
+      }
+      
+      .descripcion {
+            margin-top: 6px;
+            font-size: 15px;
+            font-weight: 900;
+            line-height: 20px;
+            color: $color-regular;
+      }
+
+      .color-square{
+        position: relative;
+        top: 8px;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+}

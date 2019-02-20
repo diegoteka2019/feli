@@ -1,0 +1,26 @@
+@import '../abstract-lateral-bar';
+
+.bar-container {
+      width: 235px;
+
+      .title {
+            .logo {
+                  width: 100px;
+            }
+      }
+
+      .option {
+            padding: 8px 0px 8px 20px;
+            width: 100%;
+
+            .option-icon-container {
+                  width: 15px;
+                  margin-right: 7px;
+
+                  .option-icon {
+                        font-size: 14px;
+                  }
+            }
+
+      }
+}

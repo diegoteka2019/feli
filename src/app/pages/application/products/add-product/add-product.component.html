@@ -1,0 +1,26 @@
+<app-side-bar [showEditButton]="false" [showDeleteButton]="false" [showCloseDialog]="!this.productGroup.pristine">
+
+      <div header>
+            <h3 class="title">Añadir Producto</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="productGroup">
+                        <label for="">
+                              <span class="label required">Categoría</span>
+                              <app-auto-complete [required]="true" *ngIf="productGroup" [outerGroup]="productGroup"
+                                    [autocompleteData]="toAutoCompleteData" placeholder="Categoría" [fcName]="'idCategoriaProductoSamsung'">
+                              </app-auto-complete>
+                        </label>
+                        <form-input [formControl]="productGroup.controls['titulo']" label="Título" [required]="true"></form-input>                        
+                        <form-input [formControl]="productGroup.controls['sku']" label="SKU"></form-input>                        
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="productGroup.invalid" (click)="addProduct(productGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

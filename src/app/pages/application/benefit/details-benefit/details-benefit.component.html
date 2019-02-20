@@ -1,0 +1,46 @@
+<app-side-bar (onEdit)="editItem(idBenefit, {route: route.parent})" (onDelete)="deleteItem(idBenefit)">
+
+      <div header>
+            <h3 class="title">Detalles de {{ item?.tituloLargo }}</h3>
+      </div>
+
+      <div body>
+
+            <div class="scroll-content">
+                  <div class="details" *ngIf="item">
+                        <div class="item">
+                              <span class="title">Marca</span>
+                              <p class="descripcion">
+                                    {{ item?.marca.titulo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Título</span>
+                              <p class="descripcion">
+                                    {{ item?.tituloLargo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Tipo de Beneficio</span>
+                              <p class="descripcion">
+                                    {{ item?.tipoBeneficio.titulo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Categorías de Beneficio</span>
+                              <div>
+                                    <span class="tag" *ngFor="let categoria of item.categorias">{{ categoria.tituloLargo }}</span>
+                              </div>
+                        </div>
+                        <div class="item" *ngIf="item.urlImg">
+                              <span class="title">Imagen</span>
+                              <div *ngIf="imagePath" class="image-container">
+                                    <img [src]="imagePath" alt="">
+                              </div>
+                        </div>
+
+                  </div>
+            </div>
+      </div>
+
+</app-side-bar>

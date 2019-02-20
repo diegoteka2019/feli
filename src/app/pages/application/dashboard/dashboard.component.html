@@ -1,0 +1,49 @@
+<div class="wrapper">  
+  <ng-scrollbar [trackX]="false" [autoHide]="false">
+      <div class="page-content">
+        <div class="chart-content">
+          <div class="flex align-content-center">
+              <div class="chart-block min">
+                <span>Total Beneficios Obtenidos</span>
+                <div class="flex align-items-center align-content-center">
+                  <label class="float-percent">{{totalResults[0].percent | number: '1.0-0'}}%</label>
+                  <ngx-charts-pie-chart [view]="totalReportSize" [results]="totalResults"  doughnut="true" [scheme]="totalColorScheme">
+                  </ngx-charts-pie-chart>                  
+                  <label class="float-legend">{{totalResults[0].value | number: '1.0-0'}} Beneficios</label>
+                </div>
+              </div>
+              <div class="chart-block min flex margin align-content-center align-items-center">                            
+                  <div class="icon-container flex align-items-center align-content-center">
+                      <i class="fas fa-user icon"></i>
+                  </div>
+                  <div class="text-content">
+                      <span><strong>{{totalUsersResult | number: '1.0-0'}}</strong> Usuarios</span>
+                  </div>
+              </div>
+              <div class="chart-block min flex align-content-center align-items-center">           
+                <div class="icon-container flex align-items-center align-content-center">
+                    <i class="fas fa-heart icon"></i>
+                </div> 
+                <div class="text-content">
+                  <span><strong>{{totalLikesResult | number: '1.0-0'}}</strong> Me gusta</span>
+                </div>
+              </div>
+          </div>                
+          <div class="chart-block max">
+              <span>Beneficios Obtenidos Por Mes</span>
+              <div class="vertical-chart">
+                <ngx-charts-bar-vertical
+                yScaleMax="5000"                    
+                [results]="monthlyResults"
+                [scheme]="monthlyColorScheme"
+                xAxis="true"
+                yAxis="true"
+                showXAxisLabel="true"      
+                showYAxisLabel="true">
+                </ngx-charts-bar-vertical> 
+            </div>
+          </div>
+      </div>
+    </div>
+  </ng-scrollbar>  
+</div>

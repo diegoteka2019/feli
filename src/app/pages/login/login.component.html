@@ -1,0 +1,12 @@
+<div class="wrapper">
+      <div class="card dark center" [ngClass]="{'error': error}">
+            <div class="logo">
+                  <img src="assets/logo_samsung-01.svg" alt="">
+            </div>
+            <form class="custom-form" [formGroup]="loginForm">
+                  <input formControlName="username" type="email" placeholder="Usuario">
+                  <input formControlName="password" type="password" placeholder="Contraseña">
+                  <button [disabled]="loginForm.invalid" class="button primary block" type="submit" (click)="singIn(loginForm.value)">Ingresar</button>
+            </form>
+      </div>
+</div>

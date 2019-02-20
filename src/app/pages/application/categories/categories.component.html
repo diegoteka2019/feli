@@ -1,0 +1,33 @@
+<div class="wrapper">
+      <ng-scrollbar [trackX]="false" [autoHide]="false">
+            <div class="page-content">
+
+                  <div class="table">
+                        <div class="table-header">
+                              <div class="flex align-items-center justify-content-between">
+                                    <button class="button green small new" (click)="addCategory()"><i class="fas fa-plus"></i><span>Nuevo</span></button>
+                                    <filter-table #filter [cols]="cols"></filter-table>
+                              </div>
+                        </div>
+                        <div class="table-body">
+                              <table-row-header [cols]="cols" [collection]="listItems"></table-row-header>
+                              <div class="scroll-container">
+                                    <div *ngFor="let categoria of listItems | search: filter.searchBox: filter.selection">
+                                          <app-table-row (click)="seeDetails(categoria.id)" (edit)="editItem(categoria.id, {event: $event})"
+                                                (delete)="deleteItem(categoria.id, $event)">
+                                                <div class="table-col-group">
+                                                      <div class="table-col flex align-items-center">{{ categoria.titulo }}</div>
+                                                      <div class="table-col flex align-items-center">
+                                                            <img class="image" alt="" [src]="getFullImageUrl(categoria.urlImg)" />
+                                                      </div>
+                                                </div>
+                                          </app-table-row>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+            </div>
+      </ng-scrollbar>
+      <router-outlet class="side-bar"></router-outlet>
+</div>

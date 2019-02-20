@@ -1,0 +1,26 @@
+<app-side-bar (onDelete)="deleteItem(idCategory)" (onEdit)="editItem(idCategory, {route: route.parent})">
+
+      <div header>
+            <h3 class="title">Detalles de {{ item?.titulo }}</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <div class="details">
+                        <div class="item">
+                              <span class="title">Título</span>
+                              <p class="descripcion">
+                                    {{ item?.titulo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Imagen</span>
+                              <div *ngIf="imagePath">
+                                    <img class="image" [src]="imagePath" alt="">
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</app-side-bar>

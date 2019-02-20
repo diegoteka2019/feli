@@ -1,0 +1,24 @@
+<app-side-bar [showEditButton]="false" (onDelete)="deleteItem(idCategory)" [showCloseDialog]="true">
+
+      <div header>
+            <h3 class="title">Editar Categoría</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="categoryGroup">
+                        <form-input [formControl]="categoryGroup.controls['titulo']" label="Título" [required]="true"></form-input>                        
+                        <label for="">
+                              <span class="label">Imagen</span>
+                              <app-image-upload (onFileUpload)="setImage($event)" [imagen]="imagePath"></app-image-upload>
+                        </label>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="categoryGroup.invalid" (click)="updateCategory(categoryGroup.value)">Guardar</button>
+      </div>
+
+
+</app-side-bar>

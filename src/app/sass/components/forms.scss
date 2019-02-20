@@ -1,0 +1,114 @@
+@import 'mixins';
+
+.custom-form {
+      label {
+            span.label {
+                  display: block;
+                  margin-bottom: 8px;
+                  font-size: 12px;
+                  color: $color-regular;
+                  &.required {
+                        display: table;
+                        position: relative;
+                  
+                        &:after {
+                              content: "*";
+                              position: absolute;
+                              top: 1px;
+                              right: -10px;
+                              color: $color-green;
+                              font-size: 18px;
+                        }
+                  }
+            }
+      }
+
+      input {
+
+            &[type=text],
+            &[type=email],
+            &[type=password],
+            &[type=number],
+            &[type=time],
+            &[type=tel] {
+                  display: block;
+                  width: 100%;
+                  margin-bottom: 15px;
+                  padding: 10px 15px;
+                  border: solid 1px $color-light;
+                  border-radius: 25px;
+                  background-color: transparent;
+                  color: $color-light;
+                  outline: none;
+            }
+      }
+
+      &.dark {
+            input {
+
+                  &[type=text],
+                  &[type=email],
+                  &[type=password],
+                  &[type=number],
+                  &[type=time],
+                  &[type=tel] {
+                        background-color: $color-dark-bg;
+                        border: none;
+                        outline: none;
+                        color: $color-regular;
+                        font-size: 13px;
+                  }
+            }
+      }
+}
+
+.mat-button .mat-button-wrapper>*, .mat-fab .mat-button-wrapper>*, .mat-flat-button .mat-button-wrapper>*, .mat-icon-button .mat-button-wrapper>*, .mat-mini-fab .mat-button-wrapper>*, .mat-raised-button .mat-button-wrapper>*, .mat-stroked-button .mat-button-wrapper {
+      color: $color-regular;
+}
+
+.mat-datepicker-content .mat-calendar {
+      background-color: $color-regular;
+      color: $color-dark-grey;
+}
+
+.mat-calendar-body-cell-content {
+      color: $color-dark-grey;
+      
+      &.mat-calendar-body-selected {
+            background-color: $color-dark-grey;
+            color: $color-regular;
+      }
+}
+
+.mat-checkbox-label {
+      color: $color-dark-grey;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: $color-green;
+}
+
+.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+      background-color: rgba($color-green, .26);
+}
+
+.datepicker{
+      .mat-datepicker-toggle{
+            .mat-icon-button{
+                  width: 30px;
+                  height: 30px;
+                  line-height: 30px;
+                  .mat-button-wrapper{
+                        > svg{
+                              height: 16px;
+                              width: 16px;
+                        }
+                  }
+            }
+      }
+}
+
+@include placeholder {
+      color: $color-regular;
+}

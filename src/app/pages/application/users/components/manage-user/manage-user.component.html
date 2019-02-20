@@ -1,0 +1,52 @@
+<app-side-bar (onEdit)="edit()" (onDelete)="delete()" [showDeleteButton]="readonlyMode || !insertMode" [showEditButton]="readonlyMode"
+      [showCloseDialog]="!this.userGroup.pristine">
+
+      <div header>
+            <h3 *ngIf="insertMode && !readonlyMode" class="title">Añadir Usuario</h3>
+            <h3 *ngIf="!insertMode && !readonlyMode" class="title">Editar Usuario</h3>
+            <h3 *ngIf="readonlyMode" class="title">Detalles Usuario</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" autocomplete="off" [formGroup]="userGroup">
+                        <input type="hidden" formControlName="id">
+                        <label for="">
+                              <span class="label">Activado</span>
+                              <div [ngClass]="{'readonly': readonlyMode}" class="input-checkbox">
+                                    <input *ngIf="readonlyMode" [readonly]="readonlyMode" type="checkbox" disabled="disabled"
+                                          [checked]="userData != null && userData.activated">
+                                    <input *ngIf="!readonlyMode" formControlName="activated" [readonly]="readonlyMode"
+                                          type="checkbox" id="activated"><label for="activated">Activado</label>
+                              </div>
+                        </label>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['email']" label="E-mail" [required]="true"></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['firstName']" label="Nombre" [required]="true"></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['lastName']" label="Apellido" [required]="true"></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['langKey']" label="Lang Key" [required]="false"></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['mensajeBienvenida']" label="Mensaje Bienvenida" [required]="false" ></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['origen']" label="Origen" [required]="false" ></form-input>
+                        <form-input [readonly]="readonlyMode" [formControl]="userGroup.controls['tituloBienvenida']" label="Título Bienvenida" [required]="false"></form-input>
+                        <label for="">
+                              <span class="label">Puede Ingresar</span>
+                              <div [ngClass]="{'readonly': readonlyMode}" class="input-checkbox">
+                                    <input *ngIf="readonlyMode" [readonly]="readonlyMode" type="checkbox" disabled="disabled"
+                                          [checked]="userData != null && userData.puedeIngresar">
+                                    <input *ngIf="!readonlyMode" formControlName="puedeIngresar" [readonly]="readonlyMode"
+                                          type="checkbox" id="puedeIngresar"><label for="puedeIngresar">Puede Ingresar</label>
+                              </div>
+                        </label>
+                        <label for="">
+                              <span class="label">Imagen</span>
+                              <app-image-upload *ngIf="!readonlyMode" [imagen]="getFullImageUrl()" (onFileUpload)="setImage($event)"></app-image-upload>
+                              <img *ngIf="readonlyMode" class="img" [src]="getFullImageUrl()">
+                        </label>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button *ngIf="!readonlyMode" class="button green small" [disabled]="userGroup.invalid" (click)="manageUser()">Guardar</button>
+      </div>
+
+</app-side-bar>

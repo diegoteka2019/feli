@@ -1,0 +1,36 @@
+<app-side-bar [showDeleteButton]="false" [showEditButton]="false" [showCloseDialog]="!this.placeGroup.pristine">
+
+      <div header>
+            <h3 class="title">Añadir Local</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="placeGroup">
+                        <label for="">
+                              <span class="label required">Marca</span>
+                              <app-auto-complete [required]="true" *ngIf="placeGroup" [outerGroup]="placeGroup"
+                                    [autocompleteData]="autocompleteBranchData" placeholder="Marca" fcName="idMarca">
+                              </app-auto-complete>
+                        </label>
+                        <form-input [formControl]="placeGroup.controls['direccion']" label="Dirección" [required]="true"></form-input>
+                        <label for="">
+                              <span class="label required">Departamento</span>
+                              <app-auto-complete [required]="true" *ngIf="placeGroup" [outerGroup]="placeGroup"
+                                    [autocompleteData]="autocompleteDepartamentData" placeholder="Departamento" fcName="idDepartamento">
+                              </app-auto-complete>
+                        </label>
+                        <form-input [formControl]="placeGroup.controls['horario']" label="Horário" [required]="true"></form-input>
+                        <form-input [formControl]="placeGroup.controls['telefono']" label="Teléfono"></form-input>
+
+
+
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="placeGroup.invalid" (click)="addPlace(placeGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

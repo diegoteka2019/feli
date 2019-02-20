@@ -1,0 +1,114 @@
+@import 'variables';
+@import 'mixins';
+
+.upload-container {
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: 20px auto;
+      padding: 80px;
+      border: dashed 1px $color-regular;
+      border-radius: 10px;
+      background-color: $color-dark-bg;
+      cursor: pointer;
+
+      &:hover {
+            border-color: $color-regular-hover;
+
+            .content {
+                  color: rgba($color-regular, .8);
+            }
+      }
+
+      .content {
+            color: rgba($color-regular, .4);
+            text-align: center;
+
+            i {
+                  display: block;
+                  font-size: 40px;
+            }
+      }
+
+      input {
+            display: none;
+      }
+}
+
+.image-container {
+      position: relative;
+      width: 350px;
+      margin: 20px auto;
+      border-radius: 10px;
+      border: solid 3px $color-dark-bg;
+      overflow: hidden;
+
+      &:hover {
+            .erase {
+                  background-color: rgba($color-dark-bg, .7);
+                  opacity: 1;
+            }
+      }
+
+      .erase {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $color-dark-bg;
+            opacity: 0;
+            font-size: 40px;
+            cursor: pointer;
+            @include prefix(transition, all ease-out .2s);
+            .button{
+                  margin: 0 5px;
+            }
+      }
+
+      .image {
+            object-fit: cover;
+            max-width: 100%;
+      }
+}
+
+.rounded {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+
+      .image {
+            width: 250px;
+            height: 250px;
+      }
+}
+
+.image-main-wrapper{
+      position: relative;
+}
+.dialog-image{
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: $color-light-blue;
+      @include prefix(transform, translateX(-50%));
+      &:after{
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: $color-light-blue;
+            @include prefix(transform, translateX(-50%) rotate(45deg));
+      }
+      .text{
+            display: block;
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: #fff;
+            white-space: nowrap;
+      }
+}

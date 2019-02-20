@@ -1,0 +1,59 @@
+<app-side-bar (onEdit)="edit()" (onDelete)="delete(benefitType.id, $event)">
+      
+    <div header>
+          <h3 class="title">Detalles de {{ benefitType?.titulo }}</h3>
+    </div>
+
+    <div body>
+
+          <div class="scroll-content">
+                <div class="details">
+                  <div class="item">
+                        <span class="title">Id</span>
+                        <p class="descripcion">
+                              {{ benefitType?.id }}
+                        </p>
+                  </div>
+                      <div class="item">
+                            <span class="title">Título</span>
+                            <p class="descripcion">
+                                  {{ benefitType?.titulo }}
+                            </p>
+                      </div>
+                      <div class="item">
+                            <span class="title">Tipo</span>
+                            <p class="descripcion">
+                                  {{ benefitType?.tipo }}
+                            </p>
+                      </div>
+                      <div class="item">
+                            <span class="title">Orden</span>
+                            <p class="descripcion">
+                                  {{ benefitType?.orden }}
+                            </p>
+                      </div>
+                      <div class="item">
+                            <span class="title">Color de Fondo</span>
+                            <div class="flex">
+                              <p class="descripcion" [ngStyle]="{'color': '#'+benefitType?.backgroundColor}">
+                                    {{ benefitType?.backgroundColor }}
+                              </p>
+                              <div class="color-square" [ngStyle]="{'background-color': '#'+benefitType?.backgroundColor}"></div>
+                              
+                            </div>
+                          </div>
+                          <div class="item">
+                            <span class="title">Color de Fuente</span>
+                            <div class="flex" *ngIf="benefitType?.charColor">
+                              <p class="descripcion" [ngStyle]="{'color': '#'+benefitType?.charColor}">
+                                {{ benefitType?.charColor }}
+                              </p>
+                              <div class="color-square" [ngStyle]="{'background-color': '#'+benefitType?.charColor}"></div>
+                            </div>
+                      </div>
+                   
+                </div>
+          </div>
+    </div>
+
+</app-side-bar>   

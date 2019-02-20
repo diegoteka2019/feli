@@ -1,0 +1,15 @@
+<form class="flex" autocomplete="off">
+    <mat-form-field class="filter">
+          <mat-select placeholder="Filtrar por" [(ngModel)]="selection" name="selection" (selectionChange)="selectionChange($event.value)">
+                <mat-option *ngFor="let col of _cols" [value]="col.orderBy">
+                      {{ col.title }}
+                </mat-option>
+          </mat-select>
+    </mat-form-field>
+    <label class="search flex align-items-center">
+          <input type="text" placeholder="Buscar" [(ngModel)]="searchBox" name="searchBox">
+          <button>
+                <i class="fas fa-search"></i>
+          </button>
+    </label>
+</form>

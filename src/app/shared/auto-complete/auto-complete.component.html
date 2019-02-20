@@ -1,0 +1,13 @@
+<form [formGroup]="outerGroup" *ngIf="isAllLoaded()">
+
+      <mat-form-field class="input-field">
+            <input type="text" placeholder="" matInput formControlName="{{fcName}}" [matAutocomplete]="auto" (focus)="validateSelection()"
+                  (keyup)="validateSelection()" [required]="required">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+                  <mat-option *ngFor="let option of filteredData | async" [value]="option.id" (onSelectionChange)="validateSelection()">
+                        {{option.displayValue}}
+                  </mat-option>
+            </mat-autocomplete>
+      </mat-form-field>
+
+</form>

@@ -1,0 +1,42 @@
+<app-side-bar [showEditButton]="false" (onDelete)="deleteItem(idBenefit, $event)" [showCloseDialog]="true">
+
+      <div header>
+            <h3 class="title">Editar Beneficio</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="benefitGroup">
+                        <label for="">
+                              <span class="label required">Marca</span>
+                              <app-auto-complete [required]="true" *ngIf="benefitGroup.get('marca')" [outerGroup]="benefitGroup.get('marca')"
+                                    [autocompleteData]="autoCompleteBranchData" placeholder="Marca" [fcName]="'id'">
+                              </app-auto-complete>
+                        </label>
+                        <form-input [formControl]="benefitGroup.controls['tituloLargo']" label="Título" [required]="true"></form-input>
+                        <label for="">
+                              <span class="label required">Tipo de Beneficio</span>
+                              <app-auto-complete [required]="true" *ngIf="benefitGroup.get('tipoBeneficio')"
+                                    [outerGroup]="benefitGroup.get('tipoBeneficio')" [autocompleteData]="autoCompleteTipoData"
+                                    placeholder="Tipo de Beneficio" [fcName]="'id'">
+                              </app-auto-complete>
+                        </label>
+                        <label for="">
+                              <span class="label required">Categorías de Beneficio</span>
+                              <multi-auto-complete [autocompleteData]="autoCompleteCategoryData" [selectedData]="selectedData"
+                                    (change)="updateData($event)" [required]="true"></multi-auto-complete>
+                        </label>
+                        <label for="">
+                              <span class="label required">Imagen</span>
+                              <app-image-upload (onFileUpload)="setImage($event)" [imagen]="imagePath" [rounded]="false"></app-image-upload>
+                        </label>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="benefitGroup.invalid || !benefitGroup.get('categorias').value[0].id"
+                  (click)="updateBenefit(benefitGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

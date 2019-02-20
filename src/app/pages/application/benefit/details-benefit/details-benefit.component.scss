@@ -1,0 +1,51 @@
+@import 'variables';
+
+.details {
+      .item {
+            &+.item {
+                  margin-top: 30px;
+            }
+      }
+
+      .title {
+            font-size: 12px;
+            color: $color-regular;
+      }
+      
+      .descripcion {
+            margin-top: 6px;
+            font-size: 15px;
+            font-weight: 900;
+            line-height: 20px;
+            color: $color-regular;
+      }
+}
+
+
+.image-container {
+      display: table;
+      position: relative;
+      width: 350px;
+      max-width: 100%;
+      margin: 20px auto;
+      border-radius: 10px;
+      border: solid 3px $color-dark-bg;
+      overflow: hidden;
+
+      img {
+            width: 100%;
+      }
+}
+
+.tag{
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 10px;
+      border-radius: 25px;
+      background-color: $color-light-blue;
+      font-size: 14px;
+      color: $color-light;
+      & + .tag{
+            margin-left: 10px;
+      }
+}

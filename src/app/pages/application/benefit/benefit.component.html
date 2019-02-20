@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <ng-scrollbar [trackX]="false" [autoHide]="false">
+        <div class="page-content">
+
+              <div class="table">
+                    <div class="table-header">
+                          <div class="flex align-items-center justify-content-between">
+                                <button class="button green small new" (click)="addBenefit()"><i class="fas fa-plus"></i><span>Nuevo</span></button>
+                                <filter-table #filter [cols]="cols"></filter-table>
+                          </div>
+                    </div>
+                    <div class="table-body">
+                          <table-row-header [cols]="cols" [collection]="listItems"></table-row-header>
+                          <div class="scroll-container">
+                                <div *ngFor="let benefit of listItems | search: filter.searchBox: filter.selection">
+                                      <app-table-row (click)="seeDetails(benefit.id)" (edit)="editItem(benefit.id, {route: route.parent, event: $event})"
+                                            (delete)="deleteItem(benefit.id, $event)">
+                                            <div class="table-col-group">
+                                                  <div class="table-col">{{ benefit.tituloLargo }}</div>
+                                                  <div class="table-col center">{{ benefit.tituloTipoBeneficio }}</div>
+                                                  <div class="table-col">{{ benefit.tituloMarca }}</div>
+                                          </div>
+                                      </app-table-row>
+                                </div>
+                          </div>
+                    </div>
+              </div>
+
+        </div>
+  </ng-scrollbar>
+  <router-outlet class="side-bar"></router-outlet>
+</div>

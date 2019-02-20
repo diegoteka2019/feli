@@ -1,0 +1,4 @@
+@import './_flex.scss';
+.flex{
+      @extend %flex;
+}

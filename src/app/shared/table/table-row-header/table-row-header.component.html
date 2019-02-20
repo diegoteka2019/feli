@@ -1,0 +1,10 @@
+<div class="table-row-header">
+      <div class="table-col-group">
+            <div class="table-col" *ngFor="let col of cols" [ngStyle]="{'flex': col.flex}" [ngClass]="{'center': col.align === 'center'}">
+                  <span class="label" (click)="orderBy(_collection, col.orderBy)" [ngClass]="{'desc': !asc}">
+                        {{ col.title }}
+                        <i class="fas fa-arrow-up" *ngIf="isOrdering(col.orderBy)"></i>
+                  </span>
+            </div>
+      </div>
+</div>

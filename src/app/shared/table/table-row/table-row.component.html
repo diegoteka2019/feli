@@ -1,0 +1,9 @@
+<div class="table-row">
+      <ng-content></ng-content>
+      <div class="actions">
+            <button class="edit" (click)="onEdit($event)"><i class="far fa-edit"></i></button>
+            <button #delete class="delete" (click)="deleteDialog($event)"><i class="far fa-trash-alt delete-icon"></i></button>
+      </div>
+</div>
+<app-dialog (cancel)="cancel()" (confirm)="onDelete()" [zeroTop]="true" [show]="showDialog" text="Estás seguro que deseas borrar este item?" cancelText="Cancelar"
+      confirmText="Borrar"></app-dialog>

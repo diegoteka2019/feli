@@ -1,0 +1,43 @@
+// Define the application mixins
+@mixin prefix($attr, $value) {
+      -webkit-#{$attr}: $value;
+      -moz-#{$attr}: $value;
+      -ms-#{$attr}: $value;
+      #{$attr}: $value;
+}
+
+@mixin keyframes($name) {
+      @-webkit-keyframes #{$name} {
+            @content;
+      }
+
+      @-moz-keyframes #{$name} {
+            @content;
+      }
+
+      @-o-keyframes #{$name} {
+            @content;
+      }
+
+      @keyframes #{$name} {
+            @content;
+      }
+}
+
+@mixin placeholder {
+      ::-webkit-input-placeholder {
+            @content
+      }
+
+      :-moz-placeholder {
+            @content
+      }
+
+      ::-moz-placeholder {
+            @content
+      }
+
+      :-ms-input-placeholder {
+            @content
+      }
+}

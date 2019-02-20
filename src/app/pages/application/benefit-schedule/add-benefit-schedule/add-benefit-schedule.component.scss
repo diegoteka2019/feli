@@ -1,0 +1,106 @@
+@import 'variables';
+@import 'mixins';
+
+.check {
+
+      cursor: pointer;
+      margin-bottom: 5px;
+
+      
+      &+.check {
+            margin-left: 5px;
+      }
+
+      
+      .checkbox {
+            display: none;
+      }
+      
+      .checked {
+            border: 1px solid $color-dark-bg;
+            background-color: $color-light-blue;
+      }
+      
+      .unchecked {
+            border: 1px solid $color-regular;
+            color: $color-light-blue;
+            opacity: .7;
+            
+            &:hover {
+                  opacity: 1;
+                  background-color: rgba($color: $color-regular, $alpha: .2);
+                  
+            }
+      }
+      
+      .text {
+            font-weight: bold;
+            color: $color-regular;
+            padding: 7px 10px;
+            border-radius: 25px;
+            @include prefix(transition, all ease-out .1s);
+      }
+
+}
+
+.check-text {
+      position: relative;
+      bottom: 0px;
+      color: $color-regular;
+      font-weight: bold;
+      font-size: 14px;
+}
+
+.margin-top {
+      margin-top: 20px;
+
+}
+
+.title {
+      @extend .text;
+      font-size: 15;
+      margin-bottom: 10px;
+}
+
+.check-cupons {
+      font-size: 12px;
+      margin-bottom: 12px;
+}
+
+.add-all {
+      margin-top: 0;
+      margin-left: 15px;
+}
+
+.datepicker {
+      background-color: $color-dark-bg;
+      border-radius: 25px;
+      margin-right: 15px;
+      padding: 0 5px 0 15px;
+
+      .date-picker-input {
+            background-color: transparent;
+            color: $color-regular;
+            border: none;
+            padding: 10px 0;
+            outline: none;
+      }
+
+      .mat-icon-button {
+            height: 30px;
+            width: 30px;
+      }
+}
+
+.items-group{
+      .item{
+            & + .item{
+                  margin-left: 15px;
+            }
+      } 
+}
+
+.copiar-titulo{
+      margin-left: 15px;
+      margin-top: 0;
+}

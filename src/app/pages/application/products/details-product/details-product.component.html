@@ -1,0 +1,32 @@
+<app-side-bar (onEdit)="editItem(idProduct, {route: route.parent})" (onDelete)="deleteItem(idProduct, $event)">
+
+      <div header>
+            <h3 class="title">Detalles de {{ item?.titulo }}</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <div class="details">
+                        <div class="item">
+                              <span class="title">Categoría</span>
+                              <p class="descripcion">
+                                    {{ category?.titulo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Título</span>
+                              <p class="descripcion">
+                                    {{ item?.titulo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Sku</span>
+                              <p class="descripcion">
+                                    {{ item?.sku }}
+                              </p>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</app-side-bar>

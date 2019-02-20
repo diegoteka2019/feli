@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'lib/flex';
+@import 'components/card';
+
+.table {
+      @extend %card;
+      width: 100%;
+      overflow: hidden;
+
+      .table-header {
+            padding: 15px;
+            color: $color-regular;
+            border-bottom: solid 1px $color-dark-line;
+      }
+
+      .table-body {
+            .table-col-group {
+                  @extend %flex;
+                  @include prefix(flex, 4);
+                  width: calc(100% - 43px);
+
+                  .table-col {
+                        @include prefix(flex, 4);
+                        margin-right: 15px;
+                        overflow: hidden;
+                        &.center{
+                              text-align: center;
+                        }
+                  }
+            }
+      }
+}
+
+.new {
+      span {
+            margin-left: 5px;
+            font-weight: 700;
+      }
+
+      i {
+            font-size: 11px;
+      }
+}

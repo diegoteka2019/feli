@@ -1,0 +1,52 @@
+@import 'variables';
+
+.bar-container {
+      font-size: 16px;
+      background-color: $color-dark-grey;
+      height: 100vh;
+      box-shadow: 1px 0px 4px rgba($color-dark, .05);
+
+      .title {
+            margin-bottom: 40px;
+            padding: 20px;
+            font-size: 20px;
+            color: $color-regular;
+
+            .icon {
+                  cursor: pointer;
+
+                  &:hover {
+                        color: $color-light;
+                  }
+            }
+      }
+
+      .option {
+            cursor: pointer;
+            color: $color-regular;
+
+            &:hover {
+                  background-color: rgba($color-light, .1);
+            }
+            &.separator{
+                  position: relative;
+                  margin-bottom: 16px;
+                  &:after{
+                        content: '';
+                        position: absolute;
+                        left: 9%;
+                        bottom: -8px;
+                        width: 82%;
+                        height: 1px;
+                        background-color: $color-dark-bg;
+                  }
+            }
+      }
+
+      .selected {
+            color: $color-light;
+            font-weight: 700;
+            background-color: rgba($color-light, .2);
+      }
+
+}

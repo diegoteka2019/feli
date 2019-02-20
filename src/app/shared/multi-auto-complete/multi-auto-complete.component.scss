@@ -1,0 +1,105 @@
+@import 'variables';
+@import 'mixins';
+
+::ng-deep form .mat-form-field {
+      width: 100% !important;
+
+      .mat-form-field-wrapper {
+            padding: 0 !important;
+            width: 100%;
+
+            .mat-form-field-infix {
+                  width: 100% !important;
+                  padding: 0 !important;
+                  border: 0 !important;
+
+                  .mat-input-element {
+                        caret-color: $color-regular !important;
+                        color: $color-regular !important;
+                  }
+
+                  .mat-select-value {
+                        color: $color-regular !important;
+                  }
+
+            }
+
+      }
+
+      .mat-form-field-underline {
+            display: none;
+      }
+
+}
+
+
+::ng-deep .cdk-overlay-pane {
+
+      @include prefix(transform, translateY(-10px));
+
+      .mat-autocomplete-panel.mat-autocomplete-visible {
+            background-color: $color-regular !important;
+
+            .mat-option {
+                  padding: 0px 15px !important;
+                  font-size: 14px !important;
+                  color: $color-dark-bg !important;
+
+            }
+
+      }
+
+}
+
+.required {
+      display: block;
+      position: relative;
+
+      &:after {
+            content: "*";
+            position: absolute;
+            bottom: 18px;
+            right: 10px;
+            color: $color-green;
+            font-size: 18px;
+      }
+}
+
+.tag {
+      display: block;
+      position: relative;
+      max-width: 500px;
+      min-width: 100px;
+      margin-top: -5px;
+      padding: 8px 28px 8px 10px;
+      font-size: 12px;
+      border-radius: 25px;
+      border: none;
+      color: #fff;
+      outline: none;
+      -webkit-appearance: none;
+      background-color: $color-light-blue;
+      margin-right: 10px;
+      margin-bottom: 15px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      .text {
+            // position: absolute;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+      }
+
+      .remove {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            margin-left: 3px;
+            cursor: pointer;
+      }
+}
+
+.selection {
+      margin-bottom: 0px;
+}

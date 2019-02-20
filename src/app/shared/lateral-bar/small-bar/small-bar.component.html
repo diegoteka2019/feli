@@ -1,0 +1,15 @@
+<div class="flex flex-column bar-container">
+
+      <div class="title flex align-items-center justify-content-center">
+            <i class="fas fa-bars icon" (click)="menuButtonClick()"></i>
+      </div>
+
+      <div (click)="goTo(page.url)" *ngFor="let page of pages" class="flex align-items-center justify-content-center"
+            [title]="page.name">
+
+            <div class="flex align-items-center justify-content-center option" [ngClass]="{'selected': page.selected, 'separator': page.section}">
+                  <i class="{{page.icon}} option-icon"></i>
+            </div>
+      </div>
+
+</div>

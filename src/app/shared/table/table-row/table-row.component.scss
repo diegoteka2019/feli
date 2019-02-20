@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'lib/flex';
+
+.table-row {
+      @extend %flex,
+      %align-items-center;
+      padding: 7px 15px 7px 15px;
+      color: $color-regular;
+      font-size: 14px;
+      cursor: pointer;
+      border-bottom: solid 1px $color-dark-opacity-line;
+
+      &:hover {
+            background-color: darken($color-dark-grey, 1.7)
+      }
+
+      .actions {
+            button {
+                  display: inline-block;
+                  width: 20px;
+                  height: 20px;
+                  padding: 0;
+                  border: 0;
+                  background-color: transparent;
+                  outline: none;
+                  text-align: center;
+                  cursor: pointer;
+                  color: $color-regular;
+
+                  &:hover {
+                        color: $color-regular-hover;
+                  }
+
+                  &+button {
+                        margin-left: 3px;
+                  }
+
+                  i {
+                        display: inherit;
+                  }
+            }
+      }
+}

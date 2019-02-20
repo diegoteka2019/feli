@@ -1,0 +1,27 @@
+<form [formGroup]="uploadForm" [style.display]="!uploaded?'block':'none'">
+      <label class="upload-container" [ngClass]="{'rounded': rounded}">
+            <div class="content" #imageUpload>
+                  <i class="far fa-image"></i>
+                  <span>
+                        Seleccione la imagen
+                  </span>
+            </div>
+            <input type="file" formGroupName="file" (change)="getFile($event)" accept="image/x-png,image/jpeg">
+      </label>
+</form>
+<div class="image-main-wrapper" *ngIf="uploaded">
+      <div class="image-container" [ngClass]="{'rounded': rounded}">
+            <img class="image" [src]="fileBase64" alt="">
+            <div class="erase flex align-items-center justify-content-center">
+                  <button class="button icon green" title="Borrar imagen" (click)="setDialog()"><i class="far fa-trash-alt"></i></button>
+                  <button class="button icon green" title="Editar imagen" (click)="triggerUpload()"><i class="far fa-edit"></i></button>
+            </div>
+      </div>
+      <div class="dialog-image" *ngIf="showDialog">
+            <span class="text">¿Estás seguro que deseas eliminar la imagen?</span>
+            <div class="button-group center">
+                  <button class="button light small" (click)="setDialog(false)">Cancelar</button>
+                  <button class="button primary small" (click)="clearFile()">Borrar</button>
+            </div>
+      </div>
+</div>

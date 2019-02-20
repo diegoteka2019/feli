@@ -1,0 +1,30 @@
+<form [formGroup]="inputGroup" *ngIf="isAllLoaded()">
+
+      <div class="flex flex-row">
+            <mat-form-field class="input-field">
+                  <label for="">
+                        <input #input type="text" placeholder="" matInput formControlName="input" [matAutocomplete]="auto"
+                              (focus)="add()" [required]="required">
+                  </label>
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+                        <mat-option *ngFor="let option of filteredData | async" [value]="option.id" (onSelectionChange)="validateSelection()">
+                              {{option.displayValue}}
+                        </mat-option>
+                  </mat-autocomplete>
+            </mat-form-field>
+      </div>
+
+
+</form>
+<div class="selection flex flex-row flex-wrap">
+
+      <div *ngFor="let item of selectedData" class="tag">
+            <span class="text">
+                  {{item.displayValue}}
+            </span>
+            <span class="remove" (click)="deleteTag(item.id)">
+                  <i class="far fa-times-circle"></i>
+            </span>
+      </div>
+
+</div>

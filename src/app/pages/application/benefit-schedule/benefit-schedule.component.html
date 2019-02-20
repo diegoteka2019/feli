@@ -1,0 +1,35 @@
+<div class="wrapper">
+      <ng-scrollbar [trackX]="false" [autoHide]="false">
+            <div class="page-content">
+
+                  <div class="table">
+                        <div class="table-header">
+                              <div class="flex align-items-center justify-content-between">
+                                    <button class="button green small new" (click)="addSchedule()"><i class="fas fa-plus"></i><span>Nuevo</span></button>
+                                    <filter-table #filter [cols]="cols"></filter-table>
+                              </div>
+                        </div>
+                        <div class="table-body">
+                              <table-row-header [cols]="cols" [collection]="listItems"></table-row-header>
+                              <div class="scroll-container">
+                                    <div *ngFor="let schedule of listItems | search: filter.searchBox: filter.selection">
+                                          <app-table-row (click)="seeDetails(schedule.idAgendaBeneficio)" (edit)="editItem(schedule.idAgendaBeneficio, {event: $event})"
+                                                (delete)="deleteItem(schedule.idAgendaBeneficio, $event)">
+                                                <div class="table-col-group">
+                                                      <div class="table-col">{{ schedule.tituloBeneficio }}</div>
+                                                      <div class="table-col">{{ schedule.tituloMarca }}</div>
+                                                      <div class="table-col">{{ schedule.fechaDesde | date: 'dd/MM/yyyy' }}</div>
+                                                      <div class="table-col">{{ schedule.fechaHasta | date: 'dd/MM/yyyy' }}</div>
+                                                      <div class="table-col activo" *ngIf="isActive(schedule.fechaDesde, schedule.fechaHasta)">Activo</div>
+                                                      <div class="table-col inactivo" *ngIf="!isActive(schedule.fechaDesde, schedule.fechaHasta)">Inactivo</div>
+                                                </div>
+                                          </app-table-row>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+            </div>
+      </ng-scrollbar>
+      <router-outlet class="side-bar"></router-outlet>
+</div>

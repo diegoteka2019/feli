@@ -1,0 +1,34 @@
+// Sass folder path is defined as "app/sass".
+// Just use:
+// @import "mysassfile"
+@import "components/card";
+@import "components/forms";
+@import "components/buttons";
+@import "components/text-editor";
+@import "lib/flex";
+@import "mixins";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+*, .required:after {
+      font-family: 'Lato';
+}
+
+body {
+      background-color: $color-dark-bg;
+}
+
+.wrapper {
+      @extend %flex;
+      height: calc(100vh - 56px);
+      
+      .page-content {
+            max-width: 930px;
+            margin: 0 auto;
+            padding: 15px;
+      }
+      
+      > ng-scrollbar{
+            @extend %flex-1;
+            height: 100%;
+      }
+}

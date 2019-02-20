@@ -1,0 +1,109 @@
+@import 'mixins';
+
+%flex {
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: flex;
+
+      // flex-direction
+      &.flex-column, &%flex-column {
+            @include prefix(flex-direction, column);
+      }
+
+      &.flex-row, &%flex-row {
+            @include prefix(flex-direction, row);
+      }
+
+      // flex-wrap
+      &.flex-wrap, &%flex-wrap {
+            @include prefix(flex-wrap, wrap);
+      }
+
+      &.flex-nowrap, &%flex-nowrap {
+            @include prefix(flex-wrap, nowrap);
+      }
+
+      // justify-content
+      &.justify-content-start, &%justify-content-start {
+            @include prefix(justify-content, flex-start);
+      }
+
+      &.justify-content-end, &%justify-content-end {
+            @include prefix(justify-content, flex-end);
+      }
+
+      &.justify-content-center, &%justify-content-center {
+            @include prefix(justify-content, center);
+      }
+
+      &.justify-content-between, &%justify-content-between {
+            @include prefix(justify-content, space-between);
+      }
+
+      &.justify-content-around, &%justify-content-around {
+            @include prefix(justify-content, space-around);
+      }
+
+      &.justify-content-evenly, &%justify-content-evenly {
+            @include prefix(justify-content, space-evenly);
+      }
+
+      // align-items
+      &.align-items-start, &%align-items-start {
+            @include prefix(align-items, flex-start);
+      }
+
+      &.align-items-end, &%align-items-end {
+            @include prefix(align-items, flex-end);
+      }
+
+      &.align-items-center, &%align-items-center {
+            @include prefix(align-items, center);
+      }
+
+      &.align-items-stretch, &%align-items-stretch {
+            @include prefix(align-items, stretch);
+      }
+
+      &.align-items-baseline, &%align-items-baseline {
+            @include prefix(align-items, baseline);
+      }
+
+      // align-content
+      &.align-content-start, &%align-content-start {
+            @include prefix(align-content, flex-start);
+      }
+
+      &.align-content-end, &%align-content-end {
+            @include prefix(align-content, flex-end);
+      }
+
+      &.align-content-center, &%align-content-center {
+            @include prefix(align-content, center);
+      }
+
+      &.align-content-stretch, &%align-content-stretch {
+            @include prefix(align-content, stretch);
+      }
+
+      &.align-content-between, &%align-content-between {
+            @include prefix(align-content, space-between);
+      }
+
+      &.align-content-around, &%align-content-around {
+            @include prefix(align-content, space-around);
+      }
+
+      &.grow-items-3, &%grow-items-3 {
+            @include prefix(flex-grow, 3);
+      }
+
+      &.grow-items-2, &%grow-items-2 {
+            @include prefix(flex-grow, 2);
+      }
+
+      .flex-1, %flex-1 {
+            @include prefix(flex, 1)
+      }
+}

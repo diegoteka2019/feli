@@ -1,0 +1,24 @@
+<div class="actions">
+      <button class="delete" (click)="delete()" *ngIf="showDeleteButton"><i class="far fa-trash-alt"></i></button>
+      <button class="edit" (click)="edit()" *ngIf="showEditButton"><i class="far fa-edit"></i></button>
+      <button class="close" (click)="close()"><i class="far fa-times-circle"></i></button>
+</div>
+
+
+<div class="content">
+
+      <app-dialog (confirm)="confirmClose()" (cancel)="cancelClose()" [show]="showClose" text="Deseas salir sin guardar los datos?" cancelText="Cancelar" confirmText="Salir"></app-dialog>
+      <app-dialog (confirm)="confirmDelete()" (cancel)="cancelDelete()" [show]="showDelete" text="Estás seguro que deseas borrar este item?" cancelText="Cancelar" confirmText="Borrar"></app-dialog>
+
+      <div class="card-header">
+            <ng-content select=[header]></ng-content>
+      </div>
+
+      <ng-scrollbar class="card-body scroll" [trackX]="false" [autoHide]="false">
+            <ng-content select=[body]></ng-content>
+      </ng-scrollbar>
+
+      <div class="card-footer">
+            <ng-content select=[footer]></ng-content>
+      </div>
+</div>

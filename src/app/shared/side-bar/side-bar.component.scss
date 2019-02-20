@@ -1,0 +1,121 @@
+@import 'variables';
+@import 'lib/flex';
+@import 'components/card';
+
+// <router-outlet>
+::ng-deep router-outlet.side-bar+* {
+      position: relative;
+      width: 55%;
+      margin-left: -15px;
+      padding: 15px;
+}
+
+// <app-side-bar> ng-content
+::ng-deep app-side-bar {
+      .card-header {
+            [header] {
+                  .title {
+                        display: block;
+                        font-size: 18px;
+                        color: $color-regular;
+                  }
+            }
+      }
+
+      .card-body {
+            [body] {
+                  .scroll-content {
+                        padding: 15px;
+                  }
+            }
+      }
+
+      .card-footer {
+            display: block;
+            position: relative;
+
+            [footer] {
+                  @extend %flex,
+                  %justify-content-end;
+            }
+      }
+}
+
+// Estilo general side-bar
+:host {
+      width: 100%;
+      height: calc(100vh - 86px);
+      @extend %card;
+      overflow: hidden;
+}
+
+.card-body {
+      @extend %flex-1;
+      overflow: auto;
+
+      &.scroll {
+            position: relative;
+
+            &:before,
+            &:after {
+                  content: '';
+                  position: absolute;
+                  left: 0;
+                  width: 100%;
+                  height: 15px;
+                  z-index: 1;
+            }
+
+            &:before {
+                  top: 0;
+                  background-image: linear-gradient(to bottom, $color-dark-grey 50%, transparent);
+            }
+
+            &:after {
+                  bottom: 0;
+                  background-image: linear-gradient(to top, $color-dark-grey 50%, transparent);
+            }
+      }
+}
+
+.content {
+      @extend %flex,
+      %flex-column;
+      height: inherit;
+}
+
+
+// Botones de acción
+.actions {
+      position: absolute;
+      width: 100%;
+      @extend %flex,
+      %align-items-center,
+      %justify-content-end;
+      padding: 5px;
+
+      button {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            outline: none;
+            text-align: center;
+            cursor: pointer;
+            color: $color-regular;
+
+            &:hover {
+                  color: $color-regular-hover;
+            }
+
+            &+button {
+                  margin-left: 3px;
+            }
+
+            i {
+                  display: inherit;
+            }
+      }
+}

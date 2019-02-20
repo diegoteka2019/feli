@@ -1,0 +1,25 @@
+<app-side-bar [showEditButton]="false" (onDelete)="deleteItem(idProducto, $event)" [showCloseDialog]="true">
+
+      <div header>
+            <h3 class="title">Editar Producto</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="productGroup">
+                        <label for="">
+                              <span class="label required">Categoría</span>
+                              <app-auto-complete [outerGroup]="productGroup" [autocompleteData]="toAutoCompleteData"
+                                    placeholder="Categoría" fcName="idCategoriaProductoSamsung" [required]="true"></app-auto-complete>
+                        </label>
+                        <form-input [formControl]="productGroup.controls['titulo']" label="Título" [required]="true"></form-input>                        
+                        <form-input [formControl]="productGroup.controls['sku']" label="SKU"></form-input>                        
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="productGroup.invalid" (click)="updateProduct(productGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

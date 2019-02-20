@@ -1,0 +1,97 @@
+@import 'animations';
+
+.button {
+      display: block;
+      position: relative;
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      -webkit-appearance: none;
+      @include prefix(transition, all ease-out .15s);
+
+      &:disabled,
+      &.disabled {
+            pointer-events: none;
+      }
+
+      &.center {
+            margin-left: auto;
+            margin-right: auto;
+      }
+
+      &.block {
+            width: 100%;
+      }
+
+      &.small {
+            margin-top: 0;
+            padding: 7px 20px;
+            font-size: 13px;
+      }
+      &.icon{
+            width: 40px;
+            height: 40px;
+            padding: 0;
+      }
+}
+
+@mixin generate_button($base, $name) {
+      .button {
+            &.#{$name} {
+                  background-color: $base;
+                  color: $color-light;
+
+                  &:hover,
+                  &.hover {
+                        background-color: darken($base, 8%);
+                  }
+
+                  &:active,
+                  &.active {
+                        background-color: darken($base, 12%);
+                  }
+
+                  &:focus,
+                  &.focus {
+                        background-color: darken($base, 5%);
+                  }
+
+                  &:disabled,
+                  &.disabled {
+                        color: #FFF;
+                        opacity: .3;
+                  }
+            }
+      }
+}
+
+@mixin generate_all_buttons($map) {
+
+      @each $name,
+      $value in $map {
+            $base: map-get($map, $name);
+            @include generate_button($base, $name);
+      }
+}
+
+@include generate_all_buttons($button-colors);
+
+
+.button-group {
+      &.right{
+            text-align: right;
+      }
+      &.center{
+            text-align: center;
+      }
+      .button {
+            display: inline-block;
+            &+.button {
+                  margin-left: 10px;
+            }
+      }
+}

@@ -1,0 +1,42 @@
+<div class="wrapper">
+      <ng-scrollbar [trackX]="false" [autoHide]="false">
+            <div class="page-content flex justify-content-center">
+
+                  <div class="table">
+
+                        <div class="table-header">
+                              <div class="flex align-items-center justify-content-between">
+                                    <button class="button green small new" (click)="addBenefitType()"><i class="fas fa-plus"></i><span>Nuevo</span></button>
+                                    <filter-table #filter [cols]="cols"></filter-table>
+                              </div>
+                        </div>
+
+                        <div class="table-body">
+                              <table-row-header [cols]="cols" [collection]="benefitTypes"></table-row-header>
+                              <div class="scroll-container">
+                                    <div *ngFor="let tipo of benefitTypes | search: filter.searchBox: filter.selection">
+                                          <app-table-row (click)="seeDetails(tipo.id)" (edit)="editBenefitType(tipo.id, $event)"
+                                                (delete)="deleteType(tipo.id, $event)">
+                                                <div class="table-col-group">
+                                                      <div class="table-col">{{ tipo.titulo }}</div>
+                                                      <div class="table-col">{{ tipo.tipo }}</div>
+                                                      <div class="table-col flex">
+                                                            <div class="color-square" [ngStyle]="{ 'background-color': '#'+tipo.backgroundColor }"></div>
+                                                            <div [ngStyle]="{ 'color': '#'+tipo.backgroundColor }">{{tipo.backgroundColor}}</div>
+                                                      </div>
+                                                      <div class="table-col flex">
+                                                            <div class="color-square" [ngStyle]="{ 'background-color': '#'+tipo.charColor }"></div>
+                                                            <div [ngStyle]="{ 'color': '#'+tipo.charColor }">{{tipo.charColor}}</div>
+                                                      </div>
+                                                </div>
+                                          </app-table-row>
+                                    </div>
+                              </div>
+                        </div>
+
+                  </div>
+
+            </div>
+      </ng-scrollbar>
+      <router-outlet class="side-bar"></router-outlet>
+</div>

@@ -1,0 +1,34 @@
+<div class="wrapper">
+      <ng-scrollbar [trackX]="false" [autoHide]="false">
+            <div class="page-content">
+
+                  <div class="table">
+                        <div class="table-header">
+                              <div class="flex align-items-center justify-content-between">
+                                    <button (click)="addProduct()" class="button green small new"><i class="fas fa-plus"></i><span>Nuevo</span></button>
+                                    <filter-table #filter [cols]="cols"></filter-table>
+                              </div>
+                        </div>
+                        <div class="table-body">
+                              <table-row-header [cols]="cols" [collection]="listItems"></table-row-header>
+                              <div class="scroll-container">
+
+                                    <div class="table-row" *ngFor="let producto of listItems | search: filter.searchBox: filter.selection">
+                                          <app-table-row (click)="seeDetails(producto.id)" (edit)="editItem(producto.id, {route: route.parent, event: $event})"
+                                                (delete)="deleteItem(producto.id, $event)">
+
+                                                <div class="table-col-group">
+                                                      <div class="table-col">{{ producto.titulo }}</div>                                                      
+                                                </div>
+
+                                          </app-table-row>
+
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+            </div>
+      </ng-scrollbar>
+      <router-outlet class="side-bar"></router-outlet>
+</div>

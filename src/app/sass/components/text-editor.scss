@@ -1,0 +1,77 @@
+
+$border-radius: 15px;
+
+.angular-editor .angular-editor-wrapper .angular-editor-textarea {
+    position: relative;
+    margin-top: 0 !important;
+    height: 120px !important;
+    padding: 0 15px 15px 15px !important;
+    background-color: $color-dark-bg !important;
+    border: 0px !important;
+    color: $color-regular !important;
+    font-size: 15px !important;
+}
+
+.angular-editor-toolbar{
+    background-color: $color-dark-bg !important;
+    border: 0px !important;
+    padding: 15px !important;
+
+    >div{
+        &:nth-child(3), &:nth-child(4), &:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10)  {
+            display: none !important;
+        }
+        &:nth-child(2){
+            >button{
+                &:nth-child(4),&:nth-child(5),&:nth-child(6) {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    .angular-editor-toolbar-set{
+
+        .angular-editor-button {
+            background-color: $color-regular !important;
+            color: $color-dark-grey !important;
+            &:hover {
+                background-color: rgba($color-regular, 0.5) !important;
+            }
+            &.active {
+                background-color: rgba($color-regular, 0.5) !important;
+
+            }
+        }
+        
+        .select-heading {
+            background-color: $color-regular !important;
+            color: $color-dark-grey !important;
+                    &:hover {
+                        background-color: rgba($color-regular, 0.5) !important;
+            
+                    }
+                }
+                
+        .select-font {
+            background-color: $color-regular !important;
+            color: $color-dark-grey !important;
+            &:hover {
+                background-color: rgba($color-regular, 0.5) !important;
+            
+            }
+        }
+                
+        .select-font-size {
+            background-color: $color-regular !important;
+            color: $color-dark-grey !important;
+            &:hover {
+                background-color: rgba($color-regular, 0.5) !important;
+                    
+            }
+            
+        }
+
+    }
+
+}

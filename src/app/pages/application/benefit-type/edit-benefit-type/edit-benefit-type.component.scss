@@ -1,0 +1,14 @@
+
+.custom-form input[type=text]  {
+    &.color-input {
+        width: 70%;
+    }
+}
+
+    .color-square{
+        position: relative;
+        top: 5px;
+        width: 22px;
+        height: 22px;
+        margin-left: 10px;
+    }

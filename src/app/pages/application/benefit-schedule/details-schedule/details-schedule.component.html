@@ -1,0 +1,96 @@
+<app-side-bar (onDelete)="deleteItem(idSchedule)" (onEdit)="editItem(idSchedule, {route: route.parent})">
+
+      <div header>
+            <h3 class="title">Detalles de la Agenda <span *ngIf="item && item.destacado" class="destacado">Destacado</span></h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <div class="details">
+                        <div class="item">
+                              <span class="title">Beneficio</span>
+                              <p class="descripcion">
+                                    {{ item?.beneficio.marca.titulo }}
+                                    {{ item?.beneficio.tituloLargo ? " - " + item?.beneficio.tituloLargo : '' }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Título a visualizar en la App</span>
+                              <p class="descripcion">
+                                    {{ item?.tituloLargo }}
+                              </p>
+                        </div>
+                        <div class="item">
+                              <span class="title">Detalle a visualizar en la App</span>
+                              <div class="html-content" [innerHTML]="item?.detalle | sanitizeHtml"></div>
+                        </div>
+
+                        <div class="flex items-group item">
+
+                              <div class="item">
+                                    <span class="title">Desde</span>
+                                    <p class="descripcion">
+                                          {{ item?.fechaDesde | date: 'dd/MM/yyyy' }}
+                                    </p>
+                              </div>
+                              <div class="item">
+                                    <span class="title">Hasta</span>
+                                    <p class="descripcion">
+                                          {{ item?.fechaHasta | date: 'dd/MM/yyyy' }}
+                                    </p>
+                              </div>
+
+                        </div>
+                        <div class="item" *ngIf="item">
+                              <span class="title">Dias disponibles</span>
+                              <div class="avaliable-days">
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleLun}">Lun</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleMar}">Mar</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleMie}">Mié</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleJue}">Jue</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleVie}">Vie</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleSab}">Sáb</div>
+                                    <div [ngClass]="{'not-avaliable':  !item.disponibleDom}">Dom</div>
+                              </div>
+                        </div>
+                        <div class="item" *ngIf="item">
+                              <span class="title">Locales</span>
+                              <div>
+                                    <span class="tag" *ngFor="let local of item.locales">
+                                          {{ local.direccion }}
+                                    </span>
+                              </div>
+                        </div>
+
+                        <div class="flex items-group item">
+                              <div class="item">
+                                    <span class="title">Cupones Totales</span>
+                                    <p class="descripcion">
+                                          {{ item?.stockCupones }}
+                                    </p>
+                              </div>
+                              <div class="item">
+                                    <span class="title">Cupones Restantes</span>
+                                    <p class="descripcion">
+                                          {{ item?.stockCuponesRestantes }}
+                                    </p>
+                              </div>
+                              <div class="item">
+                                    <span class="title">Máximo por Usuario</span>
+                                    <p class="descripcion">
+                                          {{ item?.maximoPorUsuario }}
+                                    </p>
+                              </div>
+                        </div>
+
+                        <div class="item" *ngIf="imagePath">
+                              <span class="title">Imagen</span>
+                              <div class="image-container">
+                                    <img class="img" [src]="imagePath" alt="">
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</app-side-bar>

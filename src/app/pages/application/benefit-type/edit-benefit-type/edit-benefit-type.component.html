@@ -1,0 +1,35 @@
+<app-side-bar [showEditButton]="false" (onDelete)="delete(typeId, $event)" [showCloseDialog]="true">
+
+      <div header>
+            <h3 class="title">Editar Producto</h3>
+      </div>
+
+      <div body>
+            <div class="scroll-content">
+                  <form class="custom-form dark" [formGroup]="benefitTypeGroup">
+                        <form-input [formControl]="benefitTypeGroup.controls['titulo']" label="Título" [required]="true"></form-input>
+                        <form-input [formControl]="benefitTypeGroup.controls['tipo']" label="Tipo" [required]="true"></form-input>
+                        <label for="">
+                              <span class="label required">Color de fondo</span>
+                              <div class="flex">
+                                    <input inputColor class="color-input" type="text" formControlName="backgroundColor">
+                                    <div *ngIf="backgroundColor" class="color-square" [ngStyle]="{'background-color': '#'+backgroundColor}"></div>
+                              </div>
+                        </label>
+                        <label for="">
+                              <span class="label required">Color de texto</span>
+                              <div class="flex">
+                                    <input inputColor class="color-input" type="text" formControlName="charColor">
+                                    <div *ngIf="charColor" class="color-square" [ngStyle]="{'background-color': '#'+charColor}"></div>
+                              </div>
+                        </label>
+                        <form-input [formControl]="benefitTypeGroup.controls['orden']" label="Orden" [required]="true"></form-input>
+                  </form>
+            </div>
+      </div>
+
+      <div footer>
+            <button class="button green small" [disabled]="isInvalidValidForm" (click)="saveAction(benefitTypeGroup.value)">Guardar</button>
+      </div>
+
+</app-side-bar>

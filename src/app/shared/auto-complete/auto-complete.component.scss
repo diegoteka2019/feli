@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'mixins';
+
+::ng-deep form .mat-form-field{
+    width: 100% !important;
+
+    .mat-form-field-wrapper{
+        padding: 0 !important;
+        width: 100%;
+        
+        .mat-form-field-infix{
+            width: 100% !important;
+            padding: 0 !important;
+            border: 0 !important;
+            
+            .mat-input-element{
+                caret-color: $color-regular !important;
+                color: $color-regular !important;
+            }
+
+            .mat-select-value {
+                color: $color-regular !important;
+            }
+
+        }
+        
+    }
+    
+    .mat-form-field-underline {
+        display: none;
+    }
+
+}
+
+
+::ng-deep .cdk-overlay-pane {
+
+    @include prefix(transform, translateY(-10px)); 
+    
+    .mat-autocomplete-panel.mat-autocomplete-visible{
+        background-color: $color-regular !important;
+        
+        .mat-option {
+            padding: 0px 15px !important; 
+            font-size: 14px !important;
+            color: $color-dark-bg !important;
+    
+        }
+
+    }
+    
+}

@@ -1,0 +1,9 @@
+<div class="dialog-container">
+      <div class="dialog flex justify-content-between align-items-center" *ngIf="show" [ngClass]="{'zero-top': zeroTop}">
+            <span class="text">{{ text }}</span>
+            <div class="button-group right">
+                  <button class="button light small" (click)="onCancel($event)">{{ cancelText }}</button>
+                  <button class="button primary small" (click)="onConfirm($event)">{{ confirmText }}</button>
+            </div>
+      </div>
+</div>
